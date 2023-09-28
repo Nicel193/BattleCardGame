@@ -4,11 +4,10 @@ export default class BootScene extends Phaser.Scene {
 
         console.log("Start from bootstrap");
 
-        //TODO:Connect to server
-    }
+        const socket = io();
 
-    create()
-    {
-        this.scene.start('testScene')
+        socket.on("connect", () => {
+            this.scene.start('testScene', { socket: socket })
+        });
     }
 }
