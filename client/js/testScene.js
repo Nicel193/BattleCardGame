@@ -25,28 +25,26 @@ export default class mainScene extends Phaser.Scene {
         this.sprite = this.add.sprite(500, 500, 'card');
         this.sprite.setInteractive({ draggable: true });
 
-        // this.socket.on("newPosition", (data) => {
-        //     this.sprite.x = data.posX;
-        //     this.sprite.y = data.posY;
-        // });
+        this.socket.on("newPosition", (pos) => {
+            console.log("new pos");
 
-        this.input.on('dragstart', function (pointer, gameObject) {
+            this.sprite.x = pos.data.posX;
+            this.sprite.y = pos.data.posY;
         });
 
-        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+        this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             gameObject.x = dragX;
             gameObject.y = dragY;
-        });
 
-        this.input.on('dragend', function (pointer, gameObject) {
+            this.socket.emit("position", {
+                posX: this.sprite.x,
+                posY: this.sprite.y
+            });
         });
     }
 
-    update() {
-        this.socket.emit("position", {
-            posX: this.sprite.x,
-            posY: this.sprite.y
-        });
+    async update() {
+
     }
 }
 
