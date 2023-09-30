@@ -1,5 +1,6 @@
 import FullscreenButton from './fullscreenButton.js'
-import CardHandler from './Card/CardHandler.js'
+import CardMover from './Card/CardMover.js'
+import Timer from './Timer.js'
 
 export default class BattleScene extends Phaser.Scene {
     constructor() {
@@ -19,7 +20,8 @@ export default class BattleScene extends Phaser.Scene {
     }
 
     create() {
-        this.cardHandler = new CardHandler(this);
+        this.cardHandler = new CardMover(this);
+        this.timer = new Timer(this, 30, this.onTimerComplete);
         FullscreenButton(this);
 
         // this.sprite = this.add.sprite(500, 500, 'card');
@@ -41,6 +43,14 @@ export default class BattleScene extends Phaser.Scene {
         // });
     }
 
-    async update() {
+    update() {
+        this.timer.update();
+    }
+
+    onTimerComplete() {
+        // Этот код выполняется после завершения таймера (через 30 секунд)
+        console.log('Таймер завершен. Выполняем ивент!');
+
+        // Здесь вы можете вызвать любое событие или функцию, которую хотите выполнить после истечения времени
     }
 }

@@ -1,18 +1,19 @@
 const cardOffsetY = -40;
+const cardSize = 0.15;
 
-export default class CardView {
+export default class HandCardView {
     constructor(scene) {
         this.scene = scene;
-        this.cardSize = 0.2;
         this.totalWidth = 0;
         this.cards = [];
     }
 
     add() {
         var card = this.scene.add.sprite(0, 0, 'card');
-        card.setScale(this.cardSize);
+        card.setScale(cardSize);
         card.setOrigin(0.5, 0.5);
         card.setInteractive({ draggable: true });
+        card.index = this.cards.length;
 
         this.cards.push({
             cardObject: card,
@@ -39,10 +40,12 @@ export default class CardView {
         this.draw();
     }
 
+
+
     calculateCardsPosition() {
         var centerX = this.scene.cameras.main.centerX;
         var centerY = this.scene.cameras.main.height;
-        var cardWidth = ((this.scene.textures.getFrame('card').width / 2) * this.cardSize);
+        var cardWidth = ((this.scene.textures.getFrame('card').width / 2) * cardSize);
         var totalCardsWidth = cardWidth * (this.cards.length - 1);
 
         for (var i = 0; i < this.cards.length; i++) {
