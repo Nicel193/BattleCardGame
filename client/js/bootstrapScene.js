@@ -16,7 +16,7 @@ export default class BootScene extends Phaser.Scene {
             text.setOrigin(0.5, 0.5);
             text.setFontSize(30);
 
-            this.scene.start('testScene', { socket: this.socket });
+            this.scene.start('BattleScene', { socket: this.socket });
 
             // this.socket.on("startBattle", (users) => {
             //     console.log(users);

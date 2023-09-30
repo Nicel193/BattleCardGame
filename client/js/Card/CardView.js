@@ -1,0 +1,99 @@
+const cardOffsetY = -40;
+
+export default class CardView {
+    constructor(scene) {
+        this.scene = scene;
+        this.cardSize = 0.2;
+        this.totalWidth = 0;
+        this.cards = [];
+    }
+
+    add() {
+        var card = this.scene.add.sprite(0, 0, 'card');
+        card.setScale(this.cardSize);
+        card.setOrigin(0.5, 0.5);
+        card.setInteractive({ draggable: true });
+
+        this.cards.push({
+            cardObject: card,
+            targetPositionX: 0,
+            targetPositionY: 0,
+            targetAngle: 0
+        });
+
+        this.calculateCardsPosition(card);
+        this.draw();
+    }
+
+    remove(card) {
+        this.cards.pop(card);
+    }
+
+    calculateCardsPosition(card) {
+        var centerX = this.scene.cameras.main.centerX;
+        var centerY = this.scene.cameras.main.height;
+        var cardWidth = ((card.width / 2) * this.cardSize);
+        var totalCardsWidth = cardWidth * (this.cards.length - 1);
+
+        for (var i = 0; i < this.cards.length; i++) {
+            var newTargetPosition = centerX + (cardWidth * i) - (totalCardsWidth / 2);
+
+            this.cards[i].targetAngle = this.calculateCardAngle(i);
+            this.cards[i].targetPositionX = newTargetPosition;
+            this.cards[i].targetPositionY = centerY -
+                (this.alwaysMinus(this.cards[i].targetAngle) * 4) + cardOffsetY;
+        }
+    }
+
+    calculateCardAngle(index) {
+        var t;
+
+        switch (this.cards.length) {
+            case 0:
+                t = 0;
+                break;
+            case 1:
+                t = 1;
+                break;
+            default:
+                t = 1 / (this.cards.length - 1) * 2;
+                break;
+        }
+
+        var anglePos = -1 + (index * t);
+        var angleInRadians = Math.atan2(1, anglePos / 4);
+        var angleInDegrees;
+        switch (this.cards.length) {
+            case 0:
+                angleInDegrees = 0;
+                break;
+            case 1:
+                angleInDegrees = (155 / Math.PI) * angleInRadians;
+                break;
+            default:
+                angleInDegrees = (180 / Math.PI) * angleInRadians;
+                break;
+        }
+
+        return -angleInDegrees + 90;
+    }
+
+    draw() {
+        this.cards.forEach(element => {
+            this.scene.tweens.add({
+                targets: element.cardObject,
+                x: element.targetPositionX,
+                y: element.targetPositionY,
+                angle: element.targetAngle,
+                ease: 'sine',
+                duration: 1000
+            });
+        });
+    }
+
+    alwaysMinus(number) {
+        if (number > 0) number *= -1;
+
+        return number;
+    }
+}

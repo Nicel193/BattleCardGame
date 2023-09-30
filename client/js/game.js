@@ -1,4 +1,4 @@
-import mainScene from './testScene.js'
+import BattleScene from './BattleScene.js'
 import bootstrapScene from './bootstrapScene.js'
 
 const config = {
@@ -9,7 +9,7 @@ const config = {
         width: 1280,
         height: 720
       },
-    scene: [bootstrapScene, mainScene]
+    scene: [bootstrapScene, BattleScene]
 };
 
 const game = new Phaser.Game(config);
