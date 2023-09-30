@@ -50,7 +50,7 @@ export default class mainScene extends Phaser.Scene {
         var centerY = this.cameras.main.height;
 
         var cardSize = 0.2;
-        var numCards = 6;
+        var numCards = 8;
         var totalWidth = 0;
         var anglePos = -1;
         for (var i = 1; i < numCards; i++) {
@@ -61,7 +61,6 @@ export default class mainScene extends Phaser.Scene {
             var card = this.add.sprite(0, 0, 'card');
             card.setScale(cardSize);
             card.setOrigin(0.5, 0.5);
-
             var targetPosition = centerX + (((card.width / 2) * cardSize) * i) - (totalWidth / 2);
             var t;
 
@@ -69,13 +68,29 @@ export default class mainScene extends Phaser.Scene {
                 case 0:
                     t = 0;
                     break;
+                case 1:
+                    t = 1;
+                    break;
                 default:
                     t = 1 / (numCards - 1) * 2;
                     break;
             }
 
             var angleInRadians = Math.atan2(1, anglePos / 4);
-            var angleInDegrees = (180 / Math.PI) * -angleInRadians;
+            var angleInDegrees;
+            switch(numCards) {
+                case 0:
+                    angleInDegrees = 0;
+                    break;
+                case 1:
+                    angleInDegrees = (155 / Math.PI) * -angleInRadians;
+                    break;
+                default:
+                    angleInDegrees = (180 / Math.PI) * -angleInRadians;
+                    break;
+            }
+            
+           
             var positionY = ((angleInDegrees + 90) * 4); 
 
             if(positionY > 0) positionY *= -1;
