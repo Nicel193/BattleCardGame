@@ -5,14 +5,8 @@ export default class CardHandler {
         this.cards = [];
         this.cardView = new CardView(scene);
 
-        const textButton = scene.add.text(400, 300, 'Add card', { fontSize: '32px', fill: '#fff' })
-            .setInteractive() // Делаем текст интерактивным
-            .on('pointerdown', () => {
-                this.cardView.add();
-            });
-
-        // Устанавливаем точку вращения в центр текста
-        textButton.setOrigin(0.5);
+        const button = new Button(400, 300, 'Add card', scene, () => this.cardView.add());
+        const button2 = new Button(800, 300, 'Remove card', scene, () => this.cardView.remove(0));
 
         scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             gameObject.x = dragX;
@@ -25,5 +19,18 @@ export default class CardHandler {
                 duration: 500
             });
         });
+    }
+}
+
+class Button {
+    constructor(x, y, label, scene, callback) {
+        const button = scene.add.text(x, y, label)
+            .setOrigin(0.5)
+            .setPadding(10)
+            .setStyle({ backgroundColor: '#111' })
+            .setInteractive({ useHandCursor: true })
+            .on('pointerdown', () => callback())
+            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
+            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
     }
 }

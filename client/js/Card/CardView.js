@@ -21,18 +21,28 @@ export default class CardView {
             targetAngle: 0
         });
 
-        this.calculateCardsPosition(card);
+        this.calculateCardsPosition();
         this.draw();
     }
 
-    remove(card) {
-        this.cards.pop(card);
+    remove(indexRemove) {
+        if(this.cards.length <= 0) return;
+        
+        this.cards[indexRemove].cardObject.destroy();
+        console.log(this.cards[indexRemove]);
+
+        this.cards = this.cards.filter(function (element, index) {
+            return index !== indexRemove;
+        });
+
+        this.calculateCardsPosition();
+        this.draw();
     }
 
-    calculateCardsPosition(card) {
+    calculateCardsPosition() {
         var centerX = this.scene.cameras.main.centerX;
         var centerY = this.scene.cameras.main.height;
-        var cardWidth = ((card.width / 2) * this.cardSize);
+        var cardWidth = ((this.scene.textures.getFrame('card').width / 2) * this.cardSize);
         var totalCardsWidth = cardWidth * (this.cards.length - 1);
 
         for (var i = 0; i < this.cards.length; i++) {
