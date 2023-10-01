@@ -26,7 +26,7 @@ export default class BattleScene extends Phaser.Scene {
         const background = this.add.image(0, 0, 'backgroundImg').setOrigin(0, 0);
         background.setScale(sceneWidth / background.width, sceneHeight / background.height); 
         this.cardHandler = new CardMover(this);
-        this.timer = new Timer(this, 30, this.onTimerComplete);
+        // this.timer = new Timer(this, 30, this.onTimerComplete);
         FullscreenButton(this);
         // this.sprite = this.add.sprite(500, 500, 'card');
         // this.sprite.setInteractive({ draggable: true });
@@ -48,13 +48,10 @@ export default class BattleScene extends Phaser.Scene {
     }
 
     update() {
-        this.timer.update();
+        // this.timer.update();
     }
 
     onTimerComplete() {
-        // Этот код выполняется после завершения таймера (через 30 секунд)
         console.log('Таймер завершен. Выполняем ивент!');
-
-        // Здесь вы можете вызвать любое событие или функцию, которую хотите выполнить после истечения времени
     }
 }

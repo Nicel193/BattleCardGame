@@ -4,13 +4,18 @@ const cardSize = 0.15;
 export default class TableCardView {
     constructor(scene) {
         this.scene = scene;
+        this.cardsGroup = scene.add.layer();
         this.cards = [];
+
+        this.cardsGroup.setDepth(10);
     }
 
-    tryAdd(cardObject)
-    {
-        if(this.cards.length >= maxCards) return false;
+    tryAdd(cardObject) {
+        if (this.cards.length >= maxCards) return false;
 
+        cardObject.isHandCard = false;
+
+        this.cardsGroup.add(cardObject);
         this.cards.push({
             cardObject: cardObject,
             targetPositionX: 0,
@@ -24,7 +29,8 @@ export default class TableCardView {
     }
 
     remove(cardObject) {
-        if(this.cards.length <= 0) return;
+        if (this.cards.length <= 0) return;
+        cardObject.setDepth(this.cards.length);
 
         this.cards = this.cards.filter(function (element, index) {
             return element.cardObject !== cardObject;
@@ -45,6 +51,7 @@ export default class TableCardView {
 
             this.cards[i].targetPositionX = newTargetPosition;
             this.cards[i].targetPositionY = centerY;
+            this.cards[i].cardObject.setDepth(i);
         }
     }
 

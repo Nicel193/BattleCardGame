@@ -4,7 +4,10 @@ const cardSize = 0.15;
 export default class HandCardView {
     constructor(scene) {
         this.scene = scene;
+        this.cardsGroup = scene.add.layer();
         this.cards = [];
+
+        this.cardsGroup.setDepth(11);
     }
 
     add() {
@@ -12,8 +15,9 @@ export default class HandCardView {
         card.setScale(cardSize);
         card.setOrigin(0.5, 0.5);
         card.setInteractive({ draggable: true });
-        card.index = this.cards.length;
+        card.isHandCard = true;
 
+        this.cardsGroup.add(card);
         this.cards.push({
             cardObject: card,
             targetPositionX: 0,
@@ -25,8 +29,9 @@ export default class HandCardView {
         this.draw();
     }
 
-    addObj(cardObject)
-    {
+    addObj(cardObject) {
+        this.cardsGroup.add(cardObject);
+
         this.cards.push({
             cardObject: cardObject,
             targetPositionX: 0,
@@ -39,12 +44,13 @@ export default class HandCardView {
     }
 
     remove(cardObject) {
-        if(this.cards.length <= 0) return;
+        if (this.cards.length <= 0) return;
 
         this.cards = this.cards.filter(function (element, index) {
             return element.cardObject !== cardObject;
         });
 
+        this.cardsGroup.remove(cardObject);
         this.calculateCardsPosition();
         this.draw();
     }
@@ -62,6 +68,8 @@ export default class HandCardView {
             this.cards[i].targetPositionX = newTargetPosition;
             this.cards[i].targetPositionY = centerY -
                 (this.alwaysMinus(this.cards[i].targetAngle) * 4) + cardOffsetY;
+
+            this.cards[i].cardObject.setDepth(i);
         }
     }
 

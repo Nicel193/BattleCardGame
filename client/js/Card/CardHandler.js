@@ -3,6 +3,4 @@ export default class CardHandler {
         this.tableCardGroups = [];
         this.handCards = [];
     }
-
-    
 }

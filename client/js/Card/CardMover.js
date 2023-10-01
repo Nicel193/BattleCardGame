@@ -11,34 +11,6 @@ export default class CardMover {
         const button = new Button(100, 50, 'Add card', scene, () => this.handCardView.add());
         const button2 = new Button(100, 100, 'Remove card', scene, () => this.handCardView.remove(0));
 
-        const zone = scene.add.zone(640, scene.cameras.main.centerY, 650, 200).setRectangleDropZone(650, 200);
-
-        const graphics = scene.add.graphics();
-        graphics.lineStyle(2, 0xffffff);
-        graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
-
-        scene.input.on('dragenter', (pointer, gameObject, dropZone) => {
-            if (dropZone == zone) {
-                self.tableCardView.remove(gameObject);
-
-                graphics.clear();
-                graphics.lineStyle(2, 0x00ffff);
-                graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
-            }
-        });
-
-        scene.input.on('dragleave', (pointer, gameObject, dropZone) => {
-            graphics.clear();
-            graphics.lineStyle(2, 0xffff00);
-            graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
-        });
-
-        scene.input.on('drop', function (pointer, gameObject, dropZone) {
-            if (dropZone == zone) {
-                if (self.tableCardView.tryAdd(gameObject)) self.handCardView.remove(gameObject);
-            }
-        });
-
         scene.input.on('dragstart', function (pointer, gameObject) {
             scene.tweens.add({
                 targets: gameObject,
@@ -55,7 +27,51 @@ export default class CardMover {
 
         scene.input.on('dragend', function (pointer, gameObject) {
             self.handCardView.remove(0);
+
+            if (gameObject.isHandCard === false && gameObject.isLeaveFromZone === true) {
+                self.handCardView.addObj(gameObject);
+            }
         });
+
+        CreateTableZone(scene, this.tableCardView, this.handCardView);
+    }
+}
+
+const CreateTableZone = function (scene, tableCardView, handCardView) {
+    const colorInZone = 0x00ffff;
+    const colorOutZone = 0xffffff;
+    const zone = scene.add.zone(640, scene.cameras.main.centerY, 650, 200).setRectangleDropZone(650, 200);
+    const graphics = scene.add.graphics();
+
+    SetZoneColor(colorOutZone);
+
+    scene.input.on('dragenter', (pointer, gameObject, dropZone) => {
+        gameObject.isLeaveFromZone = false;
+        tableCardView.remove(gameObject);
+
+        SetZoneColor(colorInZone);
+    });
+
+    scene.input.on('dragleave', (pointer, gameObject, dropZone) => {
+        gameObject.isLeaveFromZone = true;
+
+        SetZoneColor(colorOutZone);
+    });
+
+    scene.input.on('drop', function (pointer, gameObject, dropZone) {
+        if (dropZone == zone) {
+            if (tableCardView.tryAdd(gameObject)) {
+                handCardView.remove(gameObject);
+            }
+        }
+
+        SetZoneColor(colorOutZone);
+    });
+
+    function SetZoneColor(color) {
+        graphics.clear();
+        graphics.lineStyle(2, color);
+        graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
     }
 }
 
