@@ -17,13 +17,17 @@ export default class BattleScene extends Phaser.Scene {
             frameHeight: 64
         });
         this.load.image('card', '../assets/card.jpg');
+        this.load.image('backgroundImg', '../assets/table.jpg');
     }
 
     create() {
+        const sceneWidth = this.sys.game.config.width;
+        const sceneHeight = this.sys.game.config.height;
+        const background = this.add.image(0, 0, 'backgroundImg').setOrigin(0, 0);
+        background.setScale(sceneWidth / background.width, sceneHeight / background.height); 
         this.cardHandler = new CardMover(this);
         this.timer = new Timer(this, 30, this.onTimerComplete);
         FullscreenButton(this);
-
         // this.sprite = this.add.sprite(500, 500, 'card');
         // this.sprite.setInteractive({ draggable: true });
 
