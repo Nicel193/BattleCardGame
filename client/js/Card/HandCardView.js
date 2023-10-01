@@ -4,7 +4,6 @@ const cardSize = 0.15;
 export default class HandCardView {
     constructor(scene) {
         this.scene = scene;
-        this.totalWidth = 0;
         this.cards = [];
     }
 
@@ -39,8 +38,6 @@ export default class HandCardView {
         this.calculateCardsPosition();
         this.draw();
     }
-
-
 
     calculateCardsPosition() {
         var centerX = this.scene.cameras.main.centerX;

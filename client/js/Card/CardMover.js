@@ -1,14 +1,16 @@
 import HandCardView from './HandCardView.js'
+import TableCardView from './TableCardView.js'
 
 export default class CardMover {
     constructor(scene) {
         this.cards = [];
         this.handCardView = new HandCardView(scene);
+        this.tableCardView = new TableCardView(scene);
 
-        const button = new Button(100, 50, 'Add card', scene, () => this.handCardView.add());
-        const button2 = new Button(100, 100, 'Remove card', scene, () => this.handCardView.remove(0));
+        const button = new Button(100, 50, 'Add card', scene, () => this.tableCardView.add());
+        const button2 = new Button(100, 100, 'Remove card', scene, () => this.tableCardView.remove(0));
 
-        const zone = scene.add.zone(1000, scene.cameras.main.centerY, 500, 200).setRectangleDropZone(500, 200);
+        const zone = scene.add.zone(640, scene.cameras.main.centerY, 650, 200).setRectangleDropZone(650, 200);
 
         const graphics = scene.add.graphics();
         graphics.lineStyle(2, 0xffffff);
