@@ -25,14 +25,24 @@ export default class HandCardView {
         this.draw();
     }
 
-    remove(indexRemove) {
+    addObj(cardObject)
+    {
+        this.cards.push({
+            cardObject: cardObject,
+            targetPositionX: 0,
+            targetPositionY: 0,
+            targetAngle: 0
+        });
+
+        this.calculateCardsPosition();
+        this.draw();
+    }
+
+    remove(cardObject) {
         if(this.cards.length <= 0) return;
-        
-        this.cards[indexRemove].cardObject.destroy();
-        console.log(this.cards[indexRemove]);
 
         this.cards = this.cards.filter(function (element, index) {
-            return index !== indexRemove;
+            return element.cardObject !== cardObject;
         });
 
         this.calculateCardsPosition();

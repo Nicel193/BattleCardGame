@@ -1,5 +1,5 @@
-const cardSize = 0.15;
 const maxCards = 5;
+const cardSize = 0.15;
 
 export default class TableCardView {
     constructor(scene) {
@@ -7,33 +7,27 @@ export default class TableCardView {
         this.cards = [];
     }
 
-    add()
+    tryAdd(cardObject)
     {
-        if(this.cards.length >= maxCards) return;
-
-        var card = this.scene.add.sprite(0, 0, 'card');
-        card.setScale(cardSize);
-        card.setOrigin(0.5, 0.5);
-        card.setInteractive({ draggable: true });
+        if(this.cards.length >= maxCards) return false;
 
         this.cards.push({
-            cardObject: card,
+            cardObject: cardObject,
             targetPositionX: 0,
             targetPositionY: 0
         });
 
         this.calculateCardsPosition();
         this.draw();
+
+        return true
     }
 
-    remove(indexRemove) {
+    remove(cardObject) {
         if(this.cards.length <= 0) return;
-        
-        this.cards[indexRemove].cardObject.destroy();
-        console.log(this.cards[indexRemove]);
 
         this.cards = this.cards.filter(function (element, index) {
-            return index !== indexRemove;
+            return element.cardObject !== cardObject;
         });
 
         this.calculateCardsPosition();
