@@ -1,5 +1,5 @@
 const maxCards = 5;
-const cardSize = 0.15;
+const cardSize = 1.3;
 
 export default class TableCardView {
     constructor(scene) {

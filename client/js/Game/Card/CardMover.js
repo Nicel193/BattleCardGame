@@ -8,8 +8,8 @@ export default class CardMover {
         this.handCardView = new HandCardView(scene);
         this.tableCardView = new TableCardView(scene);
 
-        const button = new Button(100, 50, 'Add card', scene, () => this.handCardView.add());
-        const button2 = new Button(100, 100, 'Remove card', scene, () => this.handCardView.remove(0));
+        Button(100, 50, 'Add card', scene, () => this.handCardView.add());
+        Button(100, 100, 'Remove card', scene, () => this.handCardView.remove(0));
 
         scene.input.on('dragstart', function (pointer, gameObject) {
             scene.tweens.add({
@@ -38,8 +38,8 @@ export default class CardMover {
 }
 
 const CreateTableZone = function (scene, tableCardView, handCardView) {
-    const colorInZone = 0x00ffff;
-    const colorOutZone = 0xffffff;
+    const colorInZone = 0xffffff;
+    const colorOutZone = 0x836942;
     const zone = scene.add.zone(640, scene.cameras.main.centerY, 650, 200).setRectangleDropZone(650, 200);
     const graphics = scene.add.graphics();
 
@@ -75,15 +75,13 @@ const CreateTableZone = function (scene, tableCardView, handCardView) {
     }
 }
 
-class Button {
-    constructor(x, y, label, scene, callback) {
-        const button = scene.add.text(x, y, label)
-            .setOrigin(0.5)
-            .setPadding(10)
-            .setStyle({ backgroundColor: '#111' })
-            .setInteractive({ useHandCursor: true })
-            .on('pointerdown', () => callback())
-            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
-            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
-    }
+const Button = function Button(x, y, label, scene, callback) {
+    const button = scene.add.text(x, y, label)
+        .setOrigin(0.5)
+        .setPadding(10)
+        .setStyle({ backgroundColor: '#111' })
+        .setInteractive({ useHandCursor: true })
+        .on('pointerdown', () => callback())
+        .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
+        .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
 }

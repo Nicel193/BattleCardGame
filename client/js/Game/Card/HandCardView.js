@@ -1,5 +1,5 @@
 const cardOffsetY = -40;
-const cardSize = 0.15;
+const cardSize = 1.3;
 
 export default class HandCardView {
     constructor(scene) {
