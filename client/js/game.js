@@ -1,5 +1,7 @@
 import BattleScene from './BattleScene.js'
 import bootstrapScene from './bootstrapScene.js'
+import MenuScene from './MenuScene.js'
+import SettingsScene from './SettingsScene.js'
 
 const config = {
     type: Phaser.AUTO,
@@ -9,7 +11,7 @@ const config = {
         width: 1280,
         height: 720
       },
-    scene: [bootstrapScene, BattleScene]
+    scene: [MenuScene, bootstrapScene, BattleScene, SettingsScene]
 };
 
 const game = new Phaser.Game(config);
