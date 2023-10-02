@@ -1,7 +1,7 @@
 import HandCardView from './HandCardView.js'
 import TableCardView from './TableCardView.js'
 
-export default class CardMover {
+export default class CardInputController {
     constructor(scene) {
         const self = this;
         this.cards = [];

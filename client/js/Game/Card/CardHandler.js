@@ -1,6 +1,6 @@
 export default class CardHandler {
     constructor() {
-        this.tableCardGroups = [];
+        this.tableCards = [];
         this.handCards = [];
     }
 }

@@ -17,8 +17,8 @@ io.attach(server);
 socketHandler = new SocketHandler(io);
 
 app.get('/', function (req, res) {
-    // res.sendFile(path.join(__dirname, './client/views/game.html'));
-    res.sendFile(path.join(__dirname, './client/views/registration.html'));
+    res.sendFile(path.join(__dirname, './client/views/game.html'));
+    // res.sendFile(path.join(__dirname, './client/views/registration.html'));
 });
 
 server.listen(port, () => {
