@@ -15,11 +15,11 @@ class SocketHandler {
 
             this.connectCounter++;
 
-            if (this.connectCounter > 2) {
+            // if (this.connectCounter > 2) {
                 this.lobby.join(socket.id, socket);
-            } else {
-                this.lobby2.join(socket.id, socket);
-            }
+            // } else {
+            //     this.lobby2.join(socket.id, socket);
+            // }
 
             socket.on('disconnect', () => {
                 console.log('player [' + socket.id + '] disconnected');

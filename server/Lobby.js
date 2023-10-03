@@ -1,4 +1,5 @@
 const uuid = require('uuid');
+const Timer = require('./Game/Timer.js');
 const maxPlayers = 2;
 
 class Lobby {
@@ -6,6 +7,8 @@ class Lobby {
         this.io = io;
         this.lobbyId = uuid.v4();
         this.players = [];
+
+        this.timer = new Timer(io, this.lobbyId);
     }
 
     join(playerId, socket) {
@@ -17,6 +20,8 @@ class Lobby {
             isActivePlayer: this.players.length == 0
         });
 
+        if (this.players.length == maxPlayers) this.timer.startTimer();
+        
         socket.on("canStartBattle", () => {
             socket.emit("startBattle", { users: this.players.length });
             socket.to(this.lobbyId).emit("startBattle", { users: this.players.length });
