@@ -1,4 +1,4 @@
-import SoundSettings from './SoundSettings.js'; 
+import SoundSettings from '../SoundSettings.js'; 
 
 export default class SettingsScene extends Phaser.Scene {
     constructor() {

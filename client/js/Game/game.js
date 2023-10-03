@@ -1,7 +1,7 @@
-import BattleScene from './BattleScene.js'
-import bootstrapScene from './bootstrapScene.js'
-import MenuScene from './MenuScene.js'
-import SettingsScene from './SettingsScene.js'
+import BattleScene from './Scenes/BattleScene.js'
+import bootstrapScene from './Scenes/bootstrapScene.js'
+import MenuScene from './Scenes/MenuScene.js'
+import SettingsScene from './Scenes/SettingsScene.js'
 
 const config = {
     type: Phaser.AUTO,

@@ -1,17 +1,21 @@
 import HandCardView from './HandCardView.js'
 import TableCardView from './TableCardView.js'
+import CardHandler from './CardHandler.js'
 
 export default class CardInputController {
-    constructor(scene) {
+    constructor(scene, player) {
         const self = this;
         this.cards = [];
         this.handCardView = new HandCardView(scene);
         this.tableCardView = new TableCardView(scene);
+        this.cardHandler = new CardHandler(this.handCardView, this.tableCardView);
 
-        Button(100, 50, 'Add card', scene, () => this.handCardView.add());
-        Button(100, 100, 'Remove card', scene, () => this.handCardView.remove(0));
+        scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+            if (player.isActivePlayer === false) return;
 
-        scene.input.on('dragstart', function (pointer, gameObject) {
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+
             scene.tweens.add({
                 targets: gameObject,
                 angle: 0,
@@ -20,24 +24,15 @@ export default class CardInputController {
             });
         });
 
-        scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-            gameObject.x = dragX;
-            gameObject.y = dragY;
+        scene.input.on('dragend', (pointer, gameObject) => {
+            this.cardHandler.returnToHand(gameObject);
         });
 
-        scene.input.on('dragend', function (pointer, gameObject) {
-            self.handCardView.remove(0);
-
-            if (gameObject.isHandCard === false && gameObject.isLeaveFromZone === true) {
-                self.handCardView.addObj(gameObject);
-            }
-        });
-
-        CreateTableZone(scene, this.tableCardView, this.handCardView);
+        CreateTableZone(scene, player, this.cardHandler);
     }
 }
 
-const CreateTableZone = function (scene, tableCardView, handCardView) {
+const CreateTableZone = function (scene, player, cardHandler) {
     const colorInZone = 0xffffff;
     const colorOutZone = 0x836942;
     const zone = scene.add.zone(640, scene.cameras.main.centerY, 650, 200).setRectangleDropZone(650, 200);
@@ -47,7 +42,7 @@ const CreateTableZone = function (scene, tableCardView, handCardView) {
 
     scene.input.on('dragenter', (pointer, gameObject, dropZone) => {
         gameObject.isLeaveFromZone = false;
-        tableCardView.remove(gameObject);
+        cardHandler.removeFromTable(gameObject);
 
         SetZoneColor(colorInZone);
     });
@@ -59,11 +54,9 @@ const CreateTableZone = function (scene, tableCardView, handCardView) {
     });
 
     scene.input.on('drop', function (pointer, gameObject, dropZone) {
-        if (dropZone == zone) {
-            if (tableCardView.tryAdd(gameObject)) {
-                handCardView.remove(gameObject);
-            }
-        }
+        if (player.isActivePlayer === false) return;
+
+        cardHandler.addToTable(gameObject);
 
         SetZoneColor(colorOutZone);
     });

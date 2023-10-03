@@ -1,11 +1,19 @@
 import PlayerView from './PlayerView.js'
 
 export default class Player {
-    constructor() {
+    constructor(socket) {
         this.health = 30;
         this.mana = 20;
-        this.isActivePlayer = false;
         this.playerView = new PlayerView();
+
+        socket.emit("joinedToBattle");
+
+        socket.on("startBattle", (playerData) => {
+            console.log(playerData);
+
+            this.isActivePlayer = playerData.isActivePlayer;
+            this.playerId = playerData.playerId;
+        });
     }
 
     damage(damage) {
