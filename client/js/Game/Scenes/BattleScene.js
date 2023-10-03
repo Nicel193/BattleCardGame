@@ -19,10 +19,11 @@ export default class BattleScene extends Phaser.Scene {
         });
         this.load.image('card', '../assets/Card.png');
         this.load.image('backgroundImg', '../assets/GameBackground.png');
+        this.load.script('VT323', '../assets/VT323-Regular.ttf');
     }
 
     create() {
-        this.player = new Player(this.socket);
+        this.player = new Player(this, this.socket);
         this.cardHandler = new CardInputController(this, this.player);
         this.TimerView = new TimerView(this);
         
