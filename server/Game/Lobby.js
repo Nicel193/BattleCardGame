@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const Timer = require('./Game/Timer.js');
+const Timer = require('./Timer.js');
 const maxPlayers = 2;
 
 class Lobby {

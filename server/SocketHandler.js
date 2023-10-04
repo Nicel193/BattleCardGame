@@ -1,4 +1,4 @@
-const Lobby = require('./Lobby.js')
+const Lobby = require('./Game/Lobby.js')
 
 class SocketHandler {
     constructor(io) {
