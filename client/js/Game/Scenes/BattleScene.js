@@ -2,6 +2,7 @@ import FullscreenButton from '../fullscreenButton.js'
 import CardInputController from '../Card/CardInputController.js'
 import TimerView from '../TimerView.js'
 import Player from '../Player/Player.js';
+import CreateBackground from './Background.js';
 
 export default class BattleScene extends Phaser.Scene {
     constructor() {
@@ -18,7 +19,6 @@ export default class BattleScene extends Phaser.Scene {
             frameHeight: 64
         });
         this.load.image('card', '../assets/Card.png');
-        this.load.image('backgroundImg', '../assets/GameBackground.png');
         this.load.script('VT323', '../assets/VT323-Regular.ttf');
     }
 
@@ -51,12 +51,4 @@ export default class BattleScene extends Phaser.Scene {
     onTimerComplete() {
         console.log('Таймер завершен. Выполняем ивент!');
     }
-}
-
-const CreateBackground = scene => {
-    const sceneWidth = scene.sys.game.config.width;
-    const sceneHeight = scene.sys.game.config.height;
-    const background = scene.add.image(0, 0, 'backgroundImg').setOrigin(0, 0);
-    background.setScale(sceneWidth / background.width, sceneHeight / background.height);
-    background.setDepth(-1);
 }
