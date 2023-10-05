@@ -13,6 +13,7 @@ export default class HandCardView {
 
     add() {
         const card = CardBuilder(this.scene);
+        card.setInteractive({ draggable: true });
         card.isHandCard = true;
 
         this.cardsGroup.add(card);

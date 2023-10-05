@@ -9,7 +9,6 @@ function CardBuilder(scene) {
     var card = scene.add.sprite(0, 0, 'card');
     card.setScale(cardSize);
     card.setOrigin(0.5, 0.5);
-    card.setInteractive({ draggable: true });
 
     // Тут бы бала логика сборки карточки в спрайт из разных изображений
 

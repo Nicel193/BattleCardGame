@@ -1,7 +1,7 @@
 const maxCards = 5;
 const cardSize = 1.2;
 
-import { CardBuilder, cardWidth } from './CardBuilder.js'
+import { cardWidth } from './CardBuilder.js'
 
 export default class TableCardView {
     constructor(scene) {
@@ -28,6 +28,22 @@ export default class TableCardView {
         this.draw();
 
         return true
+    }
+
+    removePop() {
+        if (this.cards.length <= 0) return;
+
+        this.scene.tweens.add({
+            targets: this.cards[this.cards.length - 1].cardObject,
+            x: -100,
+            y: -100,
+            ease: 'sine',
+            duration: 1000
+        });
+        
+        this.cards.pop();
+        this.calculateCardsPosition();
+        this.draw();
     }
 
     remove(cardObject) {

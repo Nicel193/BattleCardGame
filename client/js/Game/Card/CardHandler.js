@@ -1,12 +1,13 @@
 const maxCardsInHand = 6;
 
 export default class CardHandler {
-    constructor(handCardView, tableCardView) {
+    constructor(handCardView, tableCardView, socket) {
         this.tableCards = [];
         this.handCards = [];
 
         this.handCardView = handCardView;
         this.tableCardView = tableCardView;
+        this.socket = socket;
 
         for (let i = 0; i < 6; i++) {
             setTimeout(() => {
@@ -19,6 +20,7 @@ export default class CardHandler {
     addToTable(cardObject) {
         if (this.tableCardView.tryAdd(cardObject)) {
             this.handCardView.remove(cardObject);
+            this.socket.emit("addCard");
         }
     }
 
@@ -31,6 +33,7 @@ export default class CardHandler {
 
         if (cardObject.isHandCard === false && cardObject.isLeaveFromZone === true) {
             this.handCardView.addObj(cardObject);
+            this.socket.emit("removeCard");
         }
     }
 }

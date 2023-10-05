@@ -3,12 +3,12 @@ import TableCardView from './TableCardView.js'
 import CardHandler from './CardHandler.js'
 
 export default class CardInputController {
-    constructor(scene, player) {
+    constructor(scene, socket, player) {
         const self = this;
         this.cards = [];
         this.handCardView = new HandCardView(scene);
         this.tableCardView = new TableCardView(scene);
-        this.cardHandler = new CardHandler(this.handCardView, this.tableCardView);
+        this.cardHandler = new CardHandler(this.handCardView, this.tableCardView, socket);
 
         scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             if (player.isActivePlayer === false) return;

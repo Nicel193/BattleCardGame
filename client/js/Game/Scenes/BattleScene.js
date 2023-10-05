@@ -3,6 +3,7 @@ import CardInputController from '../Card/CardInputController.js'
 import TimerView from '../TimerView.js'
 import Player from '../Player/Player.js';
 import CreateBackground from './Background.js';
+import CardNetworkController from '../Card/CardNetworkController.js';
 
 export default class BattleScene extends Phaser.Scene {
     constructor() {
@@ -25,7 +26,8 @@ export default class BattleScene extends Phaser.Scene {
 
     create() {
         this.player = new Player(this, this.socket);
-        this.cardHandler = new CardInputController(this, this.player);
+        this.cardInputController = new CardInputController(this, this.socket, this.player);
+        this.cardNetworkController = new CardNetworkController(this, this.socket);
         this.TimerView = new TimerView(this);
 
         CreateBackground(this);

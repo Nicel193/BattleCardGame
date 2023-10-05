@@ -34,6 +34,14 @@ class Lobby {
             socket.to(this.lobbyId).emit("startCardBattle", player);
         });
 
+        socket.on('addCard', () => {
+            socket.broadcast.to(this.lobbyId).emit("enemyAddCard");
+        });
+
+        socket.on('removeCard', () => {
+            socket.broadcast.to(this.lobbyId).emit("enemyRemoveCard");
+        });
+
         socket.on('disconnect', () => {
             if (socket.id == playerId) {
                 this.io.to(this.lobbyId).emit('lobbyDeleted', socket.id);

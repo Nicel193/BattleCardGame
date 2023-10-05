@@ -1,22 +1,16 @@
 import TableCardView from './TableCardView.js'
+import { CardBuilder } from './CardBuilder.js'
 
 export default class CardNetworkController {
-    constructor(scene, soket)
-    {
+    constructor(scene, socket) {
         this.tableCardView = new TableCardView(scene);
 
         socket.on("enemyAddCard", () => {
-            this.tableCardView.tryAdd();
-
-            var card = this.scene.add.sprite(0, 0, 'card');
-            card.setScale(cardSize);
-            card.setOrigin(0.5, 0.5);
-
-
+            this.tableCardView.tryAdd(CardBuilder(scene));
         });
 
         socket.on("enemyRemoveCard", () => {
-
+            this.tableCardView.removePop();
         });
     }
 }
