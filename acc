@@ -1,0 +1,219 @@
+[33mcommit 61a000205b25327c648534d7a585de2145e9173c[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Thu Oct 5 17:47:58 2023 +0300
+
+    Fix lobby bug
+
+[33mcommit 267a50d6892c503546b58bcec22cf52eb638e760[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Thu Oct 5 17:41:08 2023 +0300
+
+    Update lobby system
+
+[33mcommit ba31a6d8aaa4047f91b5f66b5d97bd8e907752e8[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Thu Oct 5 14:08:25 2023 +0300
+
+    Add lobby scene
+
+[33mcommit 52380a45cc215a7abc67a13202c57e7ccd415230[m
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Thu Oct 5 12:06:30 2023 +0300
+
+    test for refresh
+
+[33mcommit a2fe02ff569cbfb37e906703c0bf6622dccfc4f8[m
+Merge: 14ba23b faba95f
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Thu Oct 5 11:56:20 2023 +0300
+
+    Add tailing system and refresh menu
+
+[33mcommit 14ba23bf83cfadb981add687b84c170eaa8b1d85[m
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Thu Oct 5 11:53:57 2023 +0300
+
+    Nothing
+
+[33mcommit faba95f37102ad65a0876862d451b461f11c64c2[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Wed Oct 4 17:06:24 2023 +0300
+
+    Return menu
+
+[33mcommit 4badd028bcf9bda496231c02bb068dfd2db6ae74[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Wed Oct 4 16:37:57 2023 +0300
+
+    Add regestration
+
+[33mcommit ab119dd2ca9220404213f52e75e9a52dc7c5f302[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Tue Oct 3 20:47:59 2023 +0300
+
+    Add player view
+
+[33mcommit b95f449078a4a2eedb3874bb8e1ad4302bf0d140[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Tue Oct 3 20:19:18 2023 +0300
+
+    Update timer
+
+[33mcommit b4f4474889f375cb2298a58e886e384d1dffee0f[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Tue Oct 3 18:37:39 2023 +0300
+
+    Add style to game, refactor, add card handler
+
+[33mcommit 68d7353807f6eff1b84962e8d3993df9d628d6c7[m
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Mon Oct 2 22:52:21 2023 +0300
+
+    Adding menu settings
+
+[33mcommit a26ad4feda8cf08895754afe5ca8891f4dba020b[m
+Merge: 576d9be 3db1926
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Mon Oct 2 22:24:34 2023 +0300
+
+    Merge branch 'main' of github.com:Nicel193/BattleCardGame
+
+[33mcommit 576d9beb2f7e5f113963a83788287498a2f915a2[m
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Mon Oct 2 22:24:27 2023 +0300
+
+    Adding menu settings
+
+[33mcommit 3db1926f55884b4e81d3382773263147fe334df4[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Mon Oct 2 16:58:06 2023 +0300
+
+    Update player and add textures
+
+[33mcommit 5c42eb86bd5efea59ed9e13c4a6cb68772755abb[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Mon Oct 2 15:10:46 2023 +0300
+
+    Update textures
+
+[33mcommit c8e28e4e323044799f1a8f100772f08207f253b8[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 23:02:31 2023 +0300
+
+    Registration refactor
+
+[33mcommit 785c8cb5a96493ab1582ceb25522703fbd4f0a13[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 22:06:13 2023 +0300
+
+    Add registration form
+
+[33mcommit 435bdf411435b17c0a9f2d62955f0b2598a7d6d9[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 21:24:24 2023 +0300
+
+    Add remove table card option and little refactor
+
+[33mcommit 354366d2e671d9369758a5fadd27f753612ccb3e[m
+Merge: 2d5fec8 469e1ac
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 14:58:40 2023 +0300
+
+    Merge branch 'main' of github.com:Nicel193/BattleCardGame
+
+[33mcommit 2d5fec87cf808c3d73e1365d8240b46d44e2e20c[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 14:58:31 2023 +0300
+
+    Added cards placement
+
+[33mcommit 469e1ac8d5e87a91392e81debd5ca621ad2832b7[m
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Sun Oct 1 13:54:26 2023 +0300
+
+    Setting the background for the stage and board
+
+[33mcommit ec4d97e2d25e81ec921949d35c5affd7d90be434[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 12:36:16 2023 +0300
+
+    Add table card view
+
+[33mcommit a452d12857dfa7bf0f75b420b077ecc5a308fdba[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sun Oct 1 00:14:16 2023 +0300
+
+    Add timer
+
+[33mcommit b8e209be1562dd0101613e67fff79e4fd251120e[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sat Sep 30 21:20:33 2023 +0300
+
+    Remove card option
+
+[33mcommit 1394c26d16570acb854f0f932ae45afd7e2c6f06[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sat Sep 30 18:19:19 2023 +0300
+
+    Add card game option
+
+[33mcommit f5b60c7d1673b0d345c7093034c7c30d0b74fcc4[m
+Merge: 343e228 afed427
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sat Sep 30 12:18:11 2023 +0300
+
+    Merge branch 'main' of github.com:Nicel193/BattleCardGame
+
+[33mcommit 343e2285a55cd8333ca09469612c629cdb9c344c[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sat Sep 30 12:18:01 2023 +0300
+
+    Add table textures
+
+[33mcommit afed4278fa0cce3622831513344878cc5e14065a[m
+Author: Fallen-Eleonor <Daniil.Dunai@cs.khpi.edu.ua>
+Date:   Sat Sep 30 11:43:05 2023 +0300
+
+    Entering the condition for having 1 card
+
+[33mcommit 3643467c0e3f811c17cf1f2d8427954420ce0d54[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sat Sep 30 01:40:15 2023 +0300
+
+    Add ange card algotitm
+
+[33mcommit 948fbe60f5606f3101b5ec67bd0923e5ff816915[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Sat Sep 30 00:19:56 2023 +0300
+
+    Add base card panel
+
+[33mcommit b85ad045bd696db97f0693fd0139c09ebc99a701[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Fri Sep 29 20:12:02 2023 +0300
+
+    Add lobby system
+
+[33mcommit 0b35c9ff2ceb9496f94cf9ce964ba5f49065a24b[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Fri Sep 29 16:05:24 2023 +0300
+
+    Add test multiplayer
+
+[33mcommit 08f533ed2081049d4e4d456fae5fbb93e71b916d[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Thu Sep 28 21:58:59 2023 +0300
+
+    Tried to add multiplayer
+
+[33mcommit 9d0f788eeb627160ee0c355be99a316b0902fae4[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Thu Sep 28 18:49:52 2023 +0300
+
+    Add test scene
+
+[33mcommit 7dac9d77feecd1bfeecd51b403c43b0c784e2ef2[m
+Author: Nicel193 <nicelgoog@gmail.com>
+Date:   Wed Sep 27 20:27:42 2023 +0300
+
+    first commit
