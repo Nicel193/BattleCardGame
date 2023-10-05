@@ -5,7 +5,7 @@ const http = require('http')
 const socket = require('socket.io');
 const bodyParser = require('body-parser');
 const SocketHandler = require('./server/SocketHandler');
-const User = require('./server/user.js');
+const User = require('./server/User.js');
 
 const port = 8080
 const app = express();
@@ -24,9 +24,9 @@ app.get('/', function (req, res) {
     // res.sendFile(path.join(__dirname, './client/views/registration.html'));
 });
 
-// app.get('/game', function (req, res) {
-//     res.sendFile(path.join(__dirname, './client/views/game.html'));
-// });
+app.get('/game', function (req, res) {
+    res.sendFile(path.join(__dirname, './client/views/game.html'));
+});
 
 app.post('/register', async (req, res) => {
     try {

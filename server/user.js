@@ -1,8 +1,6 @@
 const db = require('./DB/db.js');
 
 class User {
-    status = 'user';
-
     constructor(data) {
         this.data = {
             login: data.login,

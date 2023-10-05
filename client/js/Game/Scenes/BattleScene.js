@@ -20,7 +20,6 @@ export default class BattleScene extends Phaser.Scene {
         });
         this.load.image('card', '../assets/Card.png');
         this.load.image('backgroundImg', '../assets/GameBackground.png');
-        this.load.script('VT323', '../assets/VT323-Regular.ttf');
     }
 
     create() {
@@ -30,23 +29,6 @@ export default class BattleScene extends Phaser.Scene {
         
         CreateBackground(this);
         FullscreenButton(this);
-        // this.sprite = this.add.sprite(500, 500, 'card');
-        // this.sprite.setInteractive({ draggable: true });
-
-        // this.socket.on("newPosition", (pos) => {
-        //     this.sprite.x = pos.data.posX;
-        //     this.sprite.y = pos.data.posY;
-        // });
-
-        // this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-        //     gameObject.x = dragX;
-        //     gameObject.y = dragY;
-
-        //     this.socket.emit("position", {
-        //         posX: this.sprite.x,
-        //         posY: this.sprite.y
-        //     });
-        // });
     }
 
     onTimerComplete() {
