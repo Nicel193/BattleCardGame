@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Menu</title>
+    <link rel="stylesheet" type="text/css" href="../styles/menu.css">
+</head>
+<body>
+    <h1>Game Menu</h1>
+
+    <button onclick="playGame()">Play</button>
+    <button onclick="openSettings()">Settings</button>
+    <button onclick="openLeaderboard()">Leaderboard</button>
+    <button onclick="openProfile()">Profile</button>
+
+    <script>
+        function playGame() {
+            window.location.href = "game.html";
+        }
+
+        function openSettings() {
+            alert("Open Settings Page");
+        }
+
+        function openLeaderboard() {
+            alert("Open Leaderboard");
+        }
+
+        function openProfile() {
+            alert("Open Profile");
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
-export default class MenuScene extends Phaser.Scene {
+export default class PauseScene extends Phaser.Scene {
     constructor() {
-        super("MenuScene");
+        super("PauseScene");
     }
     preload() {
         this.load.image('backgroundImgMenu', '../assets/7test.jpg');

@@ -1,6 +1,6 @@
 import BattleScene from './Scenes/BattleScene.js'
 import BootstrapScene from './Scenes/BootstrapScene.js'
-import MenuScene from './Scenes/MenuScene.js'
+import MenuScene from './Scenes/PauseScene.js'
 import SettingsScene from './Scenes/SettingsScene.js'
 
 const config = {
@@ -11,7 +11,7 @@ const config = {
         width: 1280,
         height: 720
       },
-    scene: [MenuScene, BootstrapScene, BattleScene, SettingsScene]
+    scene: [PauseScene, BootstrapScene, BattleScene, SettingsScene]
 };
 
 const game = new Phaser.Game(config);
