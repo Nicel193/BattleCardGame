@@ -1,6 +1,6 @@
 import BattleScene from './Scenes/BattleScene.js'
 import BootstrapScene from './Scenes/BootstrapScene.js'
-import MenuScene from './Scenes/PauseScene.js'
+import PauseScene from './Scenes/PauseScene.js'
 import SettingsScene from './Scenes/SettingsScene.js'
 
 const config = {

@@ -1,10 +1,4 @@
-<<<<<<< HEAD:client/js/Game/Scenes/PauseScene.js
 export default class PauseScene extends Phaser.Scene {
-=======
-import CreateBackground from './Background.js';
-
-export default class MenuScene extends Phaser.Scene {
->>>>>>> faba95f37102ad65a0876862d451b461f11c64c2:client/js/Game/Scenes/MenuScene.js
     constructor() {
         super("PauseScene");
     }
