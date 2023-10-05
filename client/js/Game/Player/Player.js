@@ -4,6 +4,7 @@ export default class Player {
     constructor(scene, socket) {
         this.health = 30;
         this.mana = 20;
+        this.armor = 0;
         this.playerView = new PlayerView(scene);
 
         this.playerView.drawHealth(this.health);
@@ -37,5 +38,32 @@ export default class Player {
 
     removeMana(mana) {
         this.playerView.drawMana(this.mana);
+    }
+
+    activateArmor(amount) {
+        this.armor += amount;
+    }
+
+    adddamage(card_one, card_two) {
+        this.card_one += card_two;
+    }
+    applyCard(card) {
+        switch (card.type) {
+            case 'heal':
+                this.heal(card.attribute_score);
+                break;
+            case 'power up':
+                this.adddamage(card_one.attribute_score, card_two.attribute_score);
+                break;
+            case 'damage':
+                this.damage(card.attribute_score);
+                break;
+            case 'armor':
+                this.activateArmor(card.attribute_score);
+                break;
+            default:
+                // Обработка неизвестного типа карты
+                break;
+        }
     }
 }
