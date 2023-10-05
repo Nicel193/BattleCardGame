@@ -20,6 +20,7 @@ export default class BattleScene extends Phaser.Scene {
         });
         this.load.image('card', '../assets/Card.png');
         this.load.image('backgroundImg', '../assets/GameBackground.png');
+        this.load.image('icon', '../assets/');
     }
 
     create() {
