@@ -6,6 +6,10 @@ export default class SettingsScene extends Phaser.Scene {
         this.dotCount = 0;
     }
 
+    init({ socket }) {
+        this.socket = socket;
+    }
+
     create() {
         CreateBackground(this);
 
@@ -29,6 +33,13 @@ export default class SettingsScene extends Phaser.Scene {
                 const dots = '.'.repeat(this.dotCount);
                 this.waitingPlayerText.setText('Waiting Player' + dots);
             }
+        });
+
+        this.socket.emit("joinedToLobby");
+
+        this.socket.on("startBattle", () => {
+            console.log("Battle is start");
+            this.scene.start("BattleScene", { socket: this.socket });
         });
     }
 }

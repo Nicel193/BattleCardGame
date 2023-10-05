@@ -26,9 +26,11 @@ export default class BattleScene extends Phaser.Scene {
         this.player = new Player(this, this.socket);
         this.cardHandler = new CardInputController(this, this.player);
         this.TimerView = new TimerView(this);
-        
+
         CreateBackground(this);
         FullscreenButton(this);
+
+        this.socket.on("lobbyDeleted", () => this.scene.start("MenuScene", { socket: this.socket }));
     }
 
     onTimerComplete() {

@@ -4,8 +4,8 @@ class SocketHandler {
     constructor(io) {
         this.io = io;
         this.connectCounter = 0;
-        this.lobby = new Lobby(this.io);
-        this.lobby2 = new Lobby(this.io);
+        this.lobbies = [];
+
         this.setupSocket();
     }
 
@@ -15,17 +15,33 @@ class SocketHandler {
 
             this.connectCounter++;
 
-            // if (this.connectCounter > 2) {
-                this.lobby.join(socket.id, socket);
-            // } else {
-            //     this.lobby2.join(socket.id, socket);
-            // }
+            socket.on("joinedToLobby", () => {
+                const currentLobby = this.lobbies[this.lobbies.length - 1];
+
+                if (this.lobbies.length == 0 || currentLobby.lobbyIsFull()) {
+                    this.createLobby();
+                }
+
+                currentLobby.join(socket.id, socket);
+            });
 
             socket.on('disconnect', () => {
                 console.log('player [' + socket.id + '] disconnected');
                 this.connectCounter--;
             })
         });
+    }
+
+    // Create lobby in array
+    createLobby() {
+        const lobby = new Lobby(this.io, () => {
+
+            const index = this.lobbies.indexOf(lobby);
+            if (index !== -1) {
+                this.lobbies.splice(index, 1);
+            }
+        });
+        this.lobbies.push(lobby);
     }
 }
 

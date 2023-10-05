@@ -2,7 +2,7 @@ import CreateBackground from './Background.js';
 
 export default class PauseScene extends Phaser.Scene {
     constructor() {
-        super("PauseScene");
+        super("MenuScene");
     }
 
     init({ socket }) {

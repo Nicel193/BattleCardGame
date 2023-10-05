@@ -3,12 +3,15 @@ const Timer = require('./Timer.js');
 const maxPlayers = 2;
 
 class Lobby {
-    constructor(io) {
+    constructor(io, removeLobbyCallback) {
         this.io = io;
         this.lobbyId = uuid.v4();
         this.players = [];
+        this.removeLobbyCallback = removeLobbyCallback;
 
         this.timer = new Timer(io, this.lobbyId);
+
+        console.log('Lobby created with id [' + this.lobbyId + ']');
     }
 
     join(playerId, socket) {
@@ -20,28 +23,22 @@ class Lobby {
             isActivePlayer: this.players.length == 0
         });
 
-        if (this.players.length == maxPlayers) this.timer.startTimer();
-        
-        socket.on("canStartBattle", () => {
-            socket.emit("startBattle", { users: this.players.length });
-            socket.to(this.lobbyId).emit("startBattle", { users: this.players.length });
-        });
+        if (this.lobbyIsFull()) {
+            this.io.to(this.lobbyId).emit("startBattle");
 
-        socket.on("position", (data) => {
-            socket.broadcast.to(this.lobbyId).emit("newPosition", { data });
+            this.timer.startTimer();
+        }
+
+        socket.on('joinedToBattle', () => {
+            const player = this.players.find(player => player.playerId === socket.id);
+            socket.to(this.lobbyId).emit("startCardBattle", player);
         });
 
         socket.on('disconnect', () => {
-            if (socket.id != playerId) return;
-
-            this.players = this.players.filter(function (element, index) {
-                return element.playerId !== playerId;
-            });
-            socket.to(this.lobbyId).emit('playerDisconnected', socket.id);
-        });
-
-        socket.on('joinedToBattle', () => {
-            socket.emit("startBattle", this.players[this.players.length - 1]);
+            if (socket.id == playerId) {
+                this.io.to(this.lobbyId).emit('lobbyDeleted', socket.id);
+                this.removeLobbyCallback();
+            }
         });
     }
 

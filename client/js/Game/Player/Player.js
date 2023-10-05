@@ -11,7 +11,7 @@ export default class Player {
 
         socket.emit("joinedToBattle");
 
-        socket.on("startBattle", (playerData) => {
+        socket.on("startCardBattle", (playerData) => {
             this.isActivePlayer = playerData.isActivePlayer;
             this.playerId = playerData.playerId;
         });

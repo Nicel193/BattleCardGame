@@ -12,13 +12,11 @@ class Timer {
             if (this.roundTime <= 0) return;
 
             this.roundTime -= 1;
-            console.log(this.roundTime);
             this.io.to(this.lobbyId).emit("updateTime", this.roundTime);
         }, 1000);
         
         setTimeout(() => {
             clearInterval(this.timerId);
-            console.log('Таймер остановлен');
         }, initRoundTime * 1000);
     }
 }
