@@ -1,5 +1,7 @@
 const maxCards = 5;
-const cardSize = 1.3;
+const cardSize = 1.2;
+
+import { CardBuilder, cardWidth } from './CardBuilder.js'
 
 export default class TableCardView {
     constructor(scene) {
@@ -43,11 +45,11 @@ export default class TableCardView {
     calculateCardsPosition() {
         var centerX = this.scene.cameras.main.centerX;
         var centerY = this.scene.cameras.main.centerY;
-        var cardWidth = ((this.scene.textures.getFrame('card').width) * cardSize);
-        var totalCardsWidth = cardWidth * (maxCards - 1);
+        var width = cardWidth(this.scene);
+        var totalCardsWidth = width * (maxCards - 1);
 
         for (var i = 0; i < this.cards.length; i++) {
-            var newTargetPosition = centerX + (cardWidth * i) - (totalCardsWidth / 2);
+            var newTargetPosition = centerX + (width * i) - (totalCardsWidth / 2);
 
             this.cards[i].targetPositionX = newTargetPosition;
             this.cards[i].targetPositionY = centerY;
