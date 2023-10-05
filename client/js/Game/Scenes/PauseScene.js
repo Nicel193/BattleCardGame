@@ -1,15 +1,25 @@
+<<<<<<< HEAD:client/js/Game/Scenes/PauseScene.js
 export default class PauseScene extends Phaser.Scene {
+=======
+import CreateBackground from './Background.js';
+
+export default class MenuScene extends Phaser.Scene {
+>>>>>>> faba95f37102ad65a0876862d451b461f11c64c2:client/js/Game/Scenes/MenuScene.js
     constructor() {
         super("PauseScene");
     }
-    preload() {
-        this.load.image('backgroundImgMenu', '../assets/7test.jpg');
+
+    init({ socket }) {
+        this.socket = socket;
     }
+
+    preload() {
+        this.load.image('backgroundImg', '../assets/GameBackground.png');
+    }
+
     create() {
-        const sceneWidth = this.sys.game.config.width;
-        const sceneHeight = this.sys.game.config.height;
-        const background = this.add.image(0, 0, 'backgroundImgMenu').setOrigin(0, 0);
-        background.setScale(sceneWidth / background.width, sceneHeight / background.height); 
+        CreateBackground(this);
+
         const playButton = this.add.text(
             this.sys.game.config.width / 2,
             this.sys.game.config.height / 2,
@@ -22,12 +32,12 @@ export default class PauseScene extends Phaser.Scene {
         playButton.setOrigin(0.5);
         playButton.setInteractive();
         playButton.on("pointerdown", () => {
-            this.scene.start("BootScene");
+            this.scene.start("BattleScene", { socket: this.socket });
         });
 
         const settingsButton = this.add.text(
             this.sys.game.config.width / 2,
-            this.sys.game.config.height / 2 + 50, 
+            this.sys.game.config.height / 2 + 50,
             'Settings',
             {
                 fontSize: '32px',
@@ -37,7 +47,7 @@ export default class PauseScene extends Phaser.Scene {
         settingsButton.setOrigin(0.5);
         settingsButton.setInteractive();
         settingsButton.on('pointerdown', () => {
-        this.scene.start('SettingsScene');
-    });
+            this.scene.start('SettingsScene');
+        });
     }
 }

@@ -1,4 +1,5 @@
 import SoundSettings from '../SoundSettings.js'; 
+import CreateBackground from './Background.js';
 
 export default class SettingsScene extends Phaser.Scene {
     constructor() {
@@ -6,6 +7,8 @@ export default class SettingsScene extends Phaser.Scene {
     }
 
     create() {
+        CreateBackground(this);
+
         this.soundSettings = new SoundSettings();
 
         this.add.text(
@@ -46,12 +49,12 @@ export default class SettingsScene extends Phaser.Scene {
             }
         );
 
-        const musicVolumeSlider = this.add
-            .slider(350, 150, 200, 0, 1, this.soundSettings.getMusicVolume())
-            .setOrigin(0)
-            .on('valuechange', (value) => {
-                this.soundSettings.setMusicVolume(value);
-            });
+        // const musicVolumeSlider = this.add
+        //     .slider(350, 150, 200, 0, 1, this.soundSettings.getMusicVolume())
+        //     .setOrigin(0)
+        //     .on('valuechange', (value) => {
+        //         this.soundSettings.setMusicVolume(value);
+        //     });
 
         this.add.text(
             150,
@@ -63,11 +66,11 @@ export default class SettingsScene extends Phaser.Scene {
             }
         );
 
-        const sfxVolumeSlider = this.add
-            .slider(350, 250, 200, 0, 1, this.soundSettings.getSfxVolume())
-            .setOrigin(0)
-            .on('valuechange', (value) => {
-                this.soundSettings.setSfxVolume(value);
-            });
+        // const sfxVolumeSlider = this.add
+        //     .slider(350, 250, 200, 0, 1, this.soundSettings.getSfxVolume())
+        //     .setOrigin(0)
+        //     .on('valuechange', (value) => {
+        //         this.soundSettings.setSfxVolume(value);
+        //     });
     }
 }
