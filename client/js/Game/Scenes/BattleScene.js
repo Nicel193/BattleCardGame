@@ -18,7 +18,7 @@ export default class BattleScene extends Phaser.Scene {
             frameWidth: 64,
             frameHeight: 64
         });
-        this.load.image('card', '../assets/Card.png');
+        this.load.image('card', '../assets/Cards/heal/Card_heal_2.png');
         this.load.image('backgroundImg', '../assets/GameBackground.png');
         this.load.image('icon', '../assets/');
     }
