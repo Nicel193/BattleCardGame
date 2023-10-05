@@ -22,7 +22,7 @@ class SocketHandler {
                     this.createLobby();
                 }
 
-                currentLobby.join(socket.id, socket);
+                this.lobbies[this.lobbies.length - 1].join(socket.id, socket);
             });
 
             socket.on('disconnect', () => {

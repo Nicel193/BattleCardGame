@@ -14,6 +14,8 @@ export default class Player {
         socket.on("startCardBattle", (playerData) => {
             this.isActivePlayer = playerData.isActivePlayer;
             this.playerId = playerData.playerId;
+
+            console.log(playerData);
         });
     }
 
